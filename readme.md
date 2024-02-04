@@ -1,66 +1,60 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<img src="readme.png">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## GSO Marketplace
 
-## About Laravel
+### Project Overview
+This project sets up a Dockerized development environment for Laravel applications. It includes configurations for PHP 8.3, MySQL 8.3, Nginx, and utilizes Laravel Breeze for authentication scaffolding.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Architecture Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This project sets up a Dockerized development environment for Laravel applications, incorporating PHP 8.3, MySQL 8.3, Nginx, and Adminer. Laravel, renowned for its elegant syntax and robust features, serves as the web application framework. Additionally, Laravel Breeze, a minimalist authentication starter kit, simplifies authentication workflows.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laravel**: PHP web framework
+- **Laravel Breeze**: Simplifies authentication setup within Laravel applications.
+- **PHP 8.3**: Empowers server-side scripting with enhanced features and performance.
+- **MySQL 8.3**: An open-source relational database management system
+- **Nginx**: A high-performance web server
+- **Adminer**: A lightweight, feature-rich database management tool accessible through a single PHP file, providing a unified interface for various database systems.
 
-## Learning Laravel
+This architecture fosters seamless development and management of Laravel applications, offering simplicity, versatility, and robustness throughout the development lifecycle.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## How to Install
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+To set up the environment, follow these steps:
 
-## Laravel Sponsors
+1. Clone this repository to your local machine.
+2. Navigate to the project directory `cd project-directory`
+3. Run `make setup` to initiate the setup process.
+4. Navigate to http://localhost:8000/. Happy Coding :rocket:
+```
+# Change the name of the directory if you want
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+cd Desktop
+git clone git@github.com:danielp30/osp-gruppe1.git osp-final
+cd osp-final
+make setup 
+```
 
-### Premium Partners
+## After Installation
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Once the installation is complete, you can perform the following actions:
 
-## Contributing
+- **Connect to the container**: Use `docker exec -it laravel-app sh` to access the Laravel application container.
+- **Stop the container**: Execute `docker-compose stop` to halt the running containers.
+- **Start the container**: Run `docker-compose start` to start the containers.
+- **Create containers without running Laravel setup**: To create containers without running the Laravel setup, execute `docker-compose up -d`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Adminer
+Adminer is a lightweight, yet powerful database management tool written in PHP
 
-## Code of Conduct
+To access Adminer, navigate to `http://localhost:8080` in your web browser. The port `8080` is where Adminer is configured to run. Once accessed, you can log in using the database credentials provided in your `.env` file
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Contributors
+- Daniel Peci
+- Manuel Diaz
+- Antonio Miraldi
+- Jonas Boll
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
