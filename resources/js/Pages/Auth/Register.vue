@@ -24,8 +24,12 @@ const submit = () => {
     <GuestLayout>
         <Head title="Register" />
 
-        <form @submit.prevent="submit">
-            <div>
+        <div class="mb-3 mt-10 mb-10 font-extrabold text-3xl pl-8">
+            <h1> Registrierung</h1>
+        </div>
+
+        <form @submit.prevent="submit" class="p-8">
+            <div class="mb-10">
                 <InputLabel for="name" value="Name" />
 
                 <TextInput
@@ -41,8 +45,8 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+            <div class="mt-4 mb-10 ">
+                <InputLabel for="email" value="E-Mail" />
 
                 <TextInput
                     id="email"
@@ -56,8 +60,8 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+            <div class="mt-4 mb-10">
+                <InputLabel for="password" value="Passwort" />
 
                 <TextInput
                     id="password"
@@ -71,8 +75,8 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
+            <div class="mt-4 mb-10 ">
+                <InputLabel for="password_confirmation" value="Passwort wiederholen" />
 
                 <TextInput
                     id="password_confirmation"
@@ -86,16 +90,16 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-between mt-4 mb-10">
                 <Link
                     :href="route('login')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                    Already registered?
+                    Bereits einen Account?
                 </Link>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="background: #ffd4b5;">
+                    <p class="text-black font-extrabold">Registrieren</p> <svg class="ml-2" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" fill="black"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
                 </PrimaryButton>
             </div>
         </form>

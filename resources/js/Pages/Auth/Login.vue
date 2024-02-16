@@ -82,9 +82,7 @@ const submit = () => {
 
             <div class="flex items-center justify-between mt-4 mb-10">
                 <!-- Linker Button -->
-                <ButtonLink :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    <p class="text-black font-extrabold">Registrierung</p>
-                </ButtonLink>
+                    <a href="/register">Registrierung</a>
 
                 <!-- Rechter Button -->
                 <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="background: #ffd4b5;">
