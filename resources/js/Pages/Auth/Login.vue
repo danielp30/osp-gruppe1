@@ -1,4 +1,4 @@
-<script setup>
+    <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
@@ -30,16 +30,17 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
+    <GuestLayout class="p-5">
         <Head title="Log in" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
+
+        <div class="mb-3 mt-10 font-extrabold text-3xl pl-8">
+            <h1> Anmeldung</h1>
         </div>
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
+        <form @submit.prevent="submit" class="p-8">
+            <div class="mb-10">
+                <InputLabel for="email" value="E-Mail" />
 
                 <TextInput
                     id="email"
@@ -55,7 +56,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Passwort" />
 
                 <TextInput
                     id="password"
@@ -69,26 +70,28 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
+            <div class="block mt-4 mb-20">
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
                     class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                    Forgot your password?
+                    Passwort vergessen?
                 </Link>
+            </div>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+            <div class="flex items-center justify-between mt-4 mb-10">
+                <!-- Linker Button -->
+                <ButtonLink :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <p class="text-black font-extrabold">Registrierung</p>
+                </ButtonLink>
+
+                <!-- Rechter Button -->
+                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="background: #ffd4b5;">
+                    <p class="text-black font-extrabold">Anmelden</p> <svg class="ml-2" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" fill="black"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
                 </PrimaryButton>
             </div>
+
         </form>
     </GuestLayout>
 </template>
