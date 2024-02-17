@@ -1,4 +1,4 @@
-    <script setup>
+<script setup>
 import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
@@ -82,7 +82,7 @@ const submit = () => {
 
             <div class="flex items-center justify-between mt-4 mb-10">
                 <!-- Linker Button -->
-                    <a href="/register">Registrierung</a>
+                <a href="/register">Registrierung</a>
 
                 <!-- Rechter Button -->
                 <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" style="background: #ffd4b5;">
