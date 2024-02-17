@@ -33,7 +33,6 @@ const submit = () => {
     <GuestLayout class="p-5">
         <Head title="Log in" />
 
-
         <div class="mb-3 mt-10 font-extrabold text-3xl pl-8">
             <h1> Anmeldung</h1>
         </div>

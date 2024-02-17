@@ -75,7 +75,7 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="mt-4 mb-10 ">
+            <div class="mt-4 mb-20">
                 <InputLabel for="password_confirmation" value="Passwort wiederholen" />
 
                 <TextInput
