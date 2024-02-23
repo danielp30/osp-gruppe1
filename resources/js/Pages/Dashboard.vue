@@ -5,19 +5,10 @@ import Sidebar from "@/Components/Sidebar.vue";
 </script>
 
 <template>
-    <Head title="Dashboard" />
-<sidebar></sidebar>
-    <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">You're logged in!</div>
-                </div>
-            </div>
+    <div class="flex flex-row bg-[#FFF7F1]">
+        <sidebar></sidebar>
+        <div class="p-12 w-3/5 bg-white w-screen rounded-xl m-12">
+            <h1 class="text-2xl">Hallo Admin</h1>
         </div>
-    </AuthenticatedLayout>
+    </div>
 </template>

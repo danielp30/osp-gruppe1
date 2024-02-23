@@ -1,72 +1,65 @@
 <script setup>
-
+import { LayoutDashboard, ClipboardPen, User, ClipboardSignature, LogOut } from 'lucide-vue-next';
+import DropdownLink from '@/Components/DropdownLink.vue';
 </script>
 
 <template>
-    <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-        <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+    <aside id="default-sidebar" class="w-2/5 p-12  h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+        <div class="h-full p-10 overflow-y-auto bg-white rounded-xl dark:bg-gray-800">
+            <div class="flex flex-row align-middle items-center pb-10">
+                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="50" height="50" rx="13" fill="#FFD4B5"/>
+                    <path d="M34.993 20.8217C34.9978 20.7585 34.9978 20.695 34.993 20.6318V20.6318L32.9937 15.6324C32.9156 15.4348 32.7766 15.2672 32.5969 15.1539C32.4171 15.0406 32.206 14.9876 31.994 15.0025H17.9989C17.7987 15.0023 17.6031 15.0622 17.4373 15.1745C17.2716 15.2868 17.1434 15.4463 17.0693 15.6324L15.07 20.6318C15.0652 20.695 15.0652 20.7585 15.07 20.8217C15.0368 20.8774 15.0131 20.9382 15 21.0017V21.0017C15.0111 21.6929 15.2012 22.3693 15.5516 22.9652C15.9019 23.561 16.4007 24.0558 16.9993 24.4013V34.0001C16.9993 34.2653 17.1046 34.5196 17.2921 34.7071C17.4796 34.8947 17.7338 35 17.9989 35H31.994C32.2592 35 32.5134 34.8947 32.7009 34.7071C32.8884 34.5196 32.9937 34.2653 32.9937 34.0001V24.4413C33.598 24.0923 34.1005 23.5912 34.4513 22.9878C34.802 22.3844 34.9888 21.6997 34.993 21.0017V21.0017C35.0023 20.9421 35.0023 20.8814 34.993 20.8217V20.8217ZM25.9961 33.0002H23.9968V29.0007H25.9961V33.0002ZM30.9944 33.0002H27.9954V28.0009C27.9954 27.7357 27.8901 27.4814 27.7026 27.2938C27.5152 27.1063 27.2609 27.001 26.9958 27.001H22.9972C22.7321 27.001 22.4778 27.1063 22.2903 27.2938C22.1029 27.4814 21.9975 27.7357 21.9975 28.0009V33.0002H18.9986V25.0012C19.5679 24.998 20.1299 24.8733 20.6471 24.6353C21.1643 24.3973 21.6247 24.0517 21.9975 23.6214C22.3728 24.047 22.8343 24.3878 23.3513 24.6213C23.8684 24.8547 24.4292 24.9755 24.9965 24.9755C25.5638 24.9755 26.1246 24.8547 26.6417 24.6213C27.1587 24.3878 27.6202 24.047 27.9954 23.6214C28.3683 24.0517 28.8287 24.3973 29.3459 24.6353C29.8631 24.8733 30.4251 24.998 30.9944 25.0012V33.0002ZM30.9944 23.0015C30.4641 23.0015 29.9556 22.7908 29.5807 22.4158C29.2057 22.0407 28.9951 21.5321 28.9951 21.0017C28.9951 20.7365 28.8898 20.4822 28.7023 20.2947C28.5148 20.1072 28.2606 20.0018 27.9954 20.0018C27.7303 20.0018 27.476 20.1072 27.2886 20.2947C27.1011 20.4822 26.9958 20.7365 26.9958 21.0017C26.9958 21.5321 26.7851 22.0407 26.4102 22.4158C26.0353 22.7908 25.5267 23.0015 24.9965 23.0015C24.4662 23.0015 23.9577 22.7908 23.5828 22.4158C23.2078 22.0407 22.9972 21.5321 22.9972 21.0017C22.9972 20.7365 22.8919 20.4822 22.7044 20.2947C22.5169 20.1072 22.2627 20.0018 21.9975 20.0018C21.7324 20.0018 21.4782 20.1072 21.2907 20.2947C21.1032 20.4822 20.9979 20.7365 20.9979 21.0017C21.0077 21.2643 20.9658 21.5263 20.8744 21.7727C20.783 22.0191 20.644 22.2451 20.4653 22.4377C20.2866 22.6304 20.0718 22.7859 19.833 22.8955C19.5942 23.0051 19.3361 23.0666 19.0736 23.0765C18.5433 23.0964 18.0269 22.9047 17.6379 22.5438C17.4453 22.365 17.2897 22.1501 17.1802 21.9113C17.0706 21.6724 17.0091 21.4143 16.9993 21.1517L18.6787 17.0022H31.3143L32.9937 21.1517C32.9558 21.6557 32.7285 22.1266 32.3576 22.4697C31.9867 22.8129 31.4996 23.0029 30.9944 23.0015V23.0015Z" fill="#0D0D0D"/>
+                </svg>
+                <p class="text-md p-2">GSO-Marketplace</p>
+            </div>
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-                            <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
-                            <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
-                        </svg>
+                    <a :href="route('dashboard')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <LayoutDashboard
+                            color="black"
+                            size="24"
+                        />
                         <span class="ms-3">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-                            <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Kanban</span>
-                        <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+                    <a :href="route('dashboard')"  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <ClipboardPen
+                            color="black"
+                            size="24"
+                        />
+                        <span class="flex-1 ms-3 whitespace-nowrap">Reports Generieren</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Inbox</span>
-                        <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                    <a :href="route('profile.edit')" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <User
+                            color="black"
+                            size="24"
+                        />
+                        <span class="flex-1 ms-3 whitespace-nowrap">Profil</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                            <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                    <a :href="route('dashboard')" methods="post"  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <ClipboardSignature
+                            color="black"
+                            size="24"
+                        />
+                        <span class="flex-1 ms-3 whitespace-nowrap">Anmeldungen</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-                            <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Products</span>
-                    </a>
+                    <DropdownLink :href="route('logout')" method="post" as="button">
+                        <LogOut
+                            color="black"
+                            size="24"
+                        />
+                        Log Out
+                    </DropdownLink>
                 </li>
-                <li>
-                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Sign In</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
-                            <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
-                            <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z"/>
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
-                    </a>
-                </li>
+
             </ul>
         </div>
     </aside>
