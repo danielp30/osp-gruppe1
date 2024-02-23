@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+    font-family: "degularbold";
+    src: url("../fonts/degularbold.otf");
+}
+@font-face {
+    font-family: "degular";
+    src: url("../fonts/degular.otf");
+}
