@@ -40,37 +40,38 @@ export default {
             <ul class="space-y-2 font-medium">
                 <li>
                     <div @click="$emit('overview')"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <LayoutDashboard color="black" size="24" />
                         <span class="ms-3">Dashboard</span>
                     </div>
                 </li>
                 <li>
                     <div @click="$emit('reports')"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <ClipboardPen color="black" size="24" />
                         <span class="flex-1 ms-3 whitespace-nowrap">Reports Generieren</span>
                     </div>
                 </li>
                 <li>
                     <a :href="route('profile.edit')"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <User color="black" size="24" />
                         <span class="flex-1 ms-3 whitespace-nowrap">Profil</span>
                     </a>
                 </li>
                 <li>
                     <a :href="route('dashboard')" methods="post"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <ClipboardSignature color="black" size="24" />
                         <span class="flex-1 ms-3 whitespace-nowrap">Anmeldungen</span>
                     </a>
                 </li>
                 <li>
-                    <DropdownLink :href="route('logout')" method="post" as="button">
+                    <a :href="route('logout')" methods="post"
+                       class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <LogOut color="black" size="24" />
-                        Log Out
-                    </DropdownLink>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Logout</span>
+                    </a>
                 </li>
 
             </ul>
