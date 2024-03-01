@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('contact_person_name')->nullable();
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
-            $table->timestamps();
         });
     }
 
