@@ -29,7 +29,6 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        dd($request);
         $user = $request->user();
 
         // Bild in binären Daten lesen und in die Datenbank einfügen
@@ -37,7 +36,7 @@ class ProfileController extends Controller
             $logoData = file_get_contents($request->file('logo')->getRealPath());
             $user->logo = $logoData;
         }
-    
+
         $userData = $request->validated();
         $user->fill($userData);
 
