@@ -19,7 +19,15 @@ const user = usePage().props.auth.user;
 const form = useForm({
     name: user.name,
     email: user.email,
+    contact: user.contact_person_name,
+    phone: user.phone,
+    fax: user.fax,
+    logo: user.logo,
 });
+
+const handleLogoChange = (e) => {
+    form.logo = e.target.files[0];
+};
 </script>
 
 <template>
@@ -34,34 +42,85 @@ const form = useForm({
 
         <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" value="Profilname" />
 
                 <TextInput
                     id="name"
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.name"
-                    required
+                    
                     autofocus
-                    autocomplete="name"
                 />
 
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" value="E-Mail" />
 
                 <TextInput
                     id="email"
                     type="email"
                     class="mt-1 block w-full"
                     v-model="form.email"
-                    required
-                    autocomplete="username"
+                    
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
+            </div>
+
+            <div>
+                <InputLabel for="contact" value="Ansprechperson" />
+
+                <TextInput
+                    id="contact"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.contactPersonName"
+                />
+
+                <InputError class="mt-2" :message="form.errors.contactPersonName" />
+            </div>
+
+            <div>
+                <InputLabel for="phone" value="Telefon" />
+
+                <TextInput
+                    id="phone"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.phone"
+                />
+
+                <InputError class="mt-2" :message="form.errors.phone" />
+            </div>
+
+            <div>
+                <InputLabel for="fax" value="Fax" />
+
+                <TextInput
+                    id="fax"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.fax"
+                />
+
+                <InputError class="mt-2" :message="form.errors.fax" />
+            </div>
+
+            <div>
+                <InputLabel for="logo" value="Logo" />
+
+                <input
+                    id="logo"
+                    type="file"
+                    class="mt-1 block w-full"
+                    @change="handleLogoChange"
+                />
+
+                <!-- Fehlermeldung für Logo -->
+                <InputError class="mt-2" :message="form.errors.logo" />
             </div>
 
             <div v-if="mustVerifyEmail && user.email_verified_at === null">

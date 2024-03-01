@@ -1,37 +1,41 @@
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+<script>
 import Sidebar from "@/Components/Sidebar.vue";
 import Reports from "@/Components/Reports.vue";
-import Overview from "@/Components/Overview.vue";
-</script>
-<script>
+import AdminOverview from "@/Components/AdminOverview.vue";
+import UserOverview from "@/Components/UserOverview.vue";
+import Registrations from "@/Components/Registrations.vue";
+
 export default {
     props: {
-       /* user: {
-            type: [Object],
-        },*/
+        auth: {
+            type: Object,
+            required: true
+        }
     },
     data() {
         return {
-            currentComponent: "overview",
+            currentComponent: this.auth.user.is_admin ? "adminOverview" : "userOverview"
         };
     },
-    components: {
-        Sidebar, Reports, Overview
+    methods: {
+        handleComponentChange(value) {
+            this.currentComponent = value;
+        }
     },
-    computed: {},
-    methods: {},
-    mounted() {},
-    watch: {},
+    components: {
+        Sidebar, Reports, AdminOverview, UserOverview, Registrations
+    }
 };
 </script>
 
 <template>
     <div class="flex flex-row bg-[#FFF7F1]">
-        <sidebar :user="user" @reports="currentComponent = 'reports'" @overview="currentComponent = 'overview'"></sidebar>
+        <sidebar :user="auth.user" @input="handleComponentChange"></sidebar>
         <div class="p-12 w-3/5 bg-white w-screen rounded-xl m-12">
-            <component :is="currentComponent"></component>
+            <reports v-if="currentComponent === 'reports'"></reports>
+            <admin-overview v-if="currentComponent === 'adminOverview'"></admin-overview>
+            <user-overview v-if="currentComponent === 'userOverview'"></user-overview>
+            <registrations v-if="currentComponent === 'registrations'"></registrations>
         </div>
     </div>
 </template>

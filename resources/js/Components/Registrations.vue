@@ -1,5 +1,5 @@
 <template>
     <div>
-        Overview
+        Registrations
     </div>
 </template>

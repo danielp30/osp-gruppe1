@@ -5,13 +5,12 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 <script>
 export default {
     props: {
-        /*user: {
+        user: {
             type: [Object],
-        },*/
+        },
     },
     data() {
         return {
-            //currentComponent: "overview",
         };
     },
     components: {
@@ -38,15 +37,22 @@ export default {
                 <p class="ml-2 text-xl p-2 font-['degularbold']">GSO-Marketplace</p>
             </div>
             <ul class="space-y-2 font-medium">
-                <li>
-                    <div @click="$emit('overview')"
+                <li v-if="user.is_admin">
+                    <div @click="$emit('input', 'adminOverview')"
+                        class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <LayoutDashboard color="black" size="24" />
+                        <span class="ms-3">Dashboard</span>
+                    </div>
+                </li>
+                <li v-else>
+                    <div @click="$emit('input', 'userOverview')"
                         class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <LayoutDashboard color="black" size="24" />
                         <span class="ms-3">Dashboard</span>
                     </div>
                 </li>
                 <li>
-                    <div @click="$emit('reports')"
+                    <div @click="$emit('input', 'reports')"
                         class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <ClipboardPen color="black" size="24" />
                         <span class="flex-1 ms-3 whitespace-nowrap">Reports Generieren</span>
@@ -60,11 +66,11 @@ export default {
                     </a>
                 </li>
                 <li>
-                    <a :href="route('dashboard')" methods="post"
+                    <div @click="$emit('input', 'registrations')"
                         class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <ClipboardSignature color="black" size="24" />
                         <span class="flex-1 ms-3 whitespace-nowrap">Anmeldungen</span>
-                    </a>
+                </div>
                 </li>
                 <li>
                     <a :href="route('logout')" methods="post"
