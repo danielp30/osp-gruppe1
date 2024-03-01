@@ -19,7 +19,6 @@ return new class extends Migration
             $table->date('date_saturday');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
