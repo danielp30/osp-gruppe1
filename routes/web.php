@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ItemController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -43,6 +44,9 @@ Route::get('/landingpage', function () {
 Route::get('/test', function () {
     return Inertia::render('Test');
 });
+
+
+Route::middleware('auth:sanctum')->get('/items', [ItemController::class, 'index']);
 
 
 require __DIR__.'/auth.php';
