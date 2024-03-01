@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('lectures', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('time_slot_id');
             $table->date('date');
             $table->string('status');
             $table->string('subject');
-            $table->string('room');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
