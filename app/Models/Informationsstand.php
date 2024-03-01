@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Registration extends Model
+class Informationsstand extends Model
 {
     use HasFactory;
 
+    protected $table = 'informationsstand'; // Specify the table name if it differs from the model name convention
+
     protected $fillable = [
         'user_id',
-        'registration_active',
-        'date_friday',
-        'date_saturday',
+        'date',
+        'status',
     ];
 
     // Define the relationship with the User model
