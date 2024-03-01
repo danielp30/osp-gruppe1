@@ -1,6 +1,10 @@
+<script setup>
+    import Table from '@/Components/Table.vue'
+</script>
 <template>
-    <div>
-        UserOverview
+    <div class="flex flex-col">
+        <h1 class="text-2xl pb-10">Dashboard</h1>
+            <Table></Table>
     </div>
 </template>
 
