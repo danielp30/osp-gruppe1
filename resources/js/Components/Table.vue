@@ -1,28 +1,82 @@
-<script setup>
-import { MoreHorizontal } from 'lucide-vue-next';
-import DropdownLink from '@/Components/DropdownLink.vue';
-</script>
 <template>
-    <table class="border border-2 border-black w-full m-5 rounded-xl">
+    <table class="border border-2 border-black w-full rounded-xl">
         <thead class="border border-2 border-black">
         <tr class="text-up">
+            <td><input type="checkbox" class="border-black border-2 m-2"/></td>
             <th class="px-6 py-3 text-left">Unternehmen</th>
             <th class="px-6 py-3 text-left">Datum</th>
-            <th class="px-6 py-3 text-left">Vortrag</th>
-            <th class="px-6 py-3 text-left">Stand</th>
+            <th class="px-6 py-3 text-left">Art</th>
             <th class="px-6 py-3 text-left">Status</th>
             <th class="px-6 py-3 text-left"></th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td class="px-6 py-4 ">Appox GmbH.</td>
-            <td class="px-6 py-4 ">23-02-2024</td>
-            <td class="px-6 py-4 ">Ja</td>
-            <td class="px-6 py-4 ">C10</td>
-            <td class="px-6 py-4 ">Genehmigt</td>
-            <td class="px-6 py-4"><MoreHorizontal/></td>
+        <tr v-for="(item, index) in items" :key="index">
+            <td><input type="checkbox" class="border-black border-2 m-2"/></td>
+            <td class="px-6 py-4">{{ item.user.name }}</td>
+            <td class="px-6 py-4">{{ item.date }}</td>
+            <td class="px-6 py-4">{{ item.type}}</td>
+            <td class="px-6 py-4">{{ item.status }}</td>
+            <td class="px-6 py-4">
+                <div class="relative">
+                    <MoreHorizontal @click="toggleDropdown(index)" class="cursor-pointer" />
+                    <div v-if="showDropdown === index" class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border-2 border-black z-10">
+                        <ul>
+                            <li @click="approve(index, items)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Genehmigen</li>
+                            <li @click="reject(index, items)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Ablehnen</li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>
 </template>
+
+
+<script setup>
+import { MoreHorizontal } from 'lucide-vue-next';
+import { ref } from 'vue';
+
+const showDropdown = ref(null);
+
+const toggleDropdown = (index) => {
+    showDropdown.value = showDropdown.value === index ? null : index;
+};
+
+const approve = async (index, items) => {
+    try {
+        const itemId = items[index].id;
+        await axios.put(`/items/${itemId}/approve`);
+        // If approval successful, update item status in the frontend
+        items[index].status = 'genehmigt'; // Assuming 'genehmigt' is the approved status
+    } catch (error) {
+        console.error('Error approving item:', error);
+    }
+};
+
+const reject = async (index, items) => {
+    try {
+        const itemId = items[index].id;
+        await axios.put(`/items/${itemId}/reject`);
+        // If rejection successful, update item status in the frontend
+        items[index].status = 'abgelehnt'; // Assuming 'abgelehnt' is the rejected status
+    } catch (error) {
+        console.error('Error rejecting item:', error);
+    }
+};
+</script>
+
+<script>
+export default {
+    props: {
+        items: {
+            type: Array,
+            default: () => [],
+        },
+    },
+    setup() {
+        return { showDropdown, toggleDropdown, editItem, deleteItem };
+    }
+};
+</script>

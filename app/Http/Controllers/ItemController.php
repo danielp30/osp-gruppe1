@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Informationsstand;
 use App\Models\Lecture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -87,6 +88,48 @@ class ItemController extends Controller
         }
 
         return response()->json(['message' => 'Item deleted successfully'], 200);
+    }
+
+    public function approve(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        $item = Informationsstand::find($id);
+
+        if (!$item) {
+            $item = Lecture::find($id);
+        }
+
+        if ($item) {
+            $item->status = $item instanceof Informationsstand ? 'genehmigen' : 'abgeschlossen';
+            $item->save();
+
+            return response()->json(['message' => 'Item approved successfully'], 200);
+        }
+
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+    public function reject(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        // Find the item by ID
+        $item = Informationsstand::find($id);
+        if (!$item) {
+            $item = Lecture::find($id);
+        }
+
+        // Check if the user owns the item
+        if ($item) {
+            // Update the status to "ablehnen" or "inaktiv" depending on the type
+            $item->status = $item instanceof Informationsstand ? 'ablehnen' : 'inaktiv';
+            $item->save();
+
+            return response()->json(['message' => 'Item rejected successfully'], 200);
+        }
+
+        return response()->json(['error' => 'Unauthorized'], 401);
     }
 
 }
