@@ -13,7 +13,6 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import axios from 'axios';
-import Table from '@/Components/Table.vue';
 
 const combinedItems = ref([]);
 const searchQuery = ref('');

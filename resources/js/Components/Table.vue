@@ -48,8 +48,7 @@ const approve = async (index, items) => {
     try {
         const itemId = items[index].id;
         await axios.put(`/items/${itemId}/approve`);
-        // If approval successful, update item status in the frontend
-        items[index].status = 'genehmigt'; // Assuming 'genehmigt' is the approved status
+        items[index].status = 'genehmigt';
     } catch (error) {
         console.error('Error approving item:', error);
     }
@@ -59,8 +58,7 @@ const reject = async (index, items) => {
     try {
         const itemId = items[index].id;
         await axios.put(`/items/${itemId}/reject`);
-        // If rejection successful, update item status in the frontend
-        items[index].status = 'abgelehnt'; // Assuming 'abgelehnt' is the rejected status
+        items[index].status = 'abgelehnt';
     } catch (error) {
         console.error('Error rejecting item:', error);
     }
