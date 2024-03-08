@@ -47,6 +47,9 @@ Route::get('/test', function () {
 
 
 Route::middleware('auth:sanctum')->get('/items', [ItemController::class, 'index']);
+Route::middleware('auth:sanctum')->put('/items/{id}/approve', [ItemController::class, 'approve']);
+Route::middleware('auth:sanctum')->put('/items/{id}/reject', [ItemController::class, 'reject']);
+
 
 
 require __DIR__.'/auth.php';

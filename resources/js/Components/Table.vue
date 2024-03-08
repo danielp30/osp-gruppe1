@@ -22,8 +22,8 @@
                     <MoreHorizontal @click="toggleDropdown(index)" class="cursor-pointer" />
                     <div v-if="showDropdown === index" class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border-2 border-black z-10">
                         <ul>
-                            <li @click="editItem(index)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Genehmigen</li>
-                            <li @click="deleteItem(index)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Ablehnen</li>
+                            <li @click="approve(index, items)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Genehmigen</li>
+                            <li @click="reject(index, items)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Ablehnen</li>
                         </ul>
                     </div>
                 </div>
@@ -44,12 +44,26 @@ const toggleDropdown = (index) => {
     showDropdown.value = showDropdown.value === index ? null : index;
 };
 
-const editItem = (index) => {
-    // Handle edit logic here
+const approve = async (index, items) => {
+    try {
+        const itemId = items[index].id;
+        await axios.put(`/items/${itemId}/approve`);
+        // If approval successful, update item status in the frontend
+        items[index].status = 'genehmigt'; // Assuming 'genehmigt' is the approved status
+    } catch (error) {
+        console.error('Error approving item:', error);
+    }
 };
 
-const deleteItem = (index) => {
-    // Handle delete logic here
+const reject = async (index, items) => {
+    try {
+        const itemId = items[index].id;
+        await axios.put(`/items/${itemId}/reject`);
+        // If rejection successful, update item status in the frontend
+        items[index].status = 'abgelehnt'; // Assuming 'abgelehnt' is the rejected status
+    } catch (error) {
+        console.error('Error rejecting item:', error);
+    }
 };
 </script>
 
