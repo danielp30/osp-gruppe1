@@ -33,10 +33,10 @@ const handleLogoChange = (e) => {
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Profile Information</h2>
+            <h2 class="text-lg font-medium text-gray-900">Profil Information</h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Update your account's profile information and email address.
+                Aktualisieren Sie die Profilinformationen und die E-Mail-Adresse Ihres Kontos.
             </p>
         </header>
 
@@ -49,7 +49,7 @@ const handleLogoChange = (e) => {
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.name"
-                    
+
                     autofocus
                 />
 
@@ -64,7 +64,7 @@ const handleLogoChange = (e) => {
                     type="email"
                     class="mt-1 block w-full"
                     v-model="form.email"
-                    
+
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
@@ -132,7 +132,7 @@ const handleLogoChange = (e) => {
                         as="button"
                         class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                        Click here to re-send the verification email.
+                        Klicken Sie hier, um die Bestätigungs-E-Mail erneut zu senden.
                     </Link>
                 </p>
 
@@ -140,12 +140,12 @@ const handleLogoChange = (e) => {
                     v-show="status === 'verification-link-sent'"
                     class="mt-2 font-medium text-sm text-green-600"
                 >
-                    A new verification link has been sent to your email address.
+                    Es wurde ein neuer Verifizierungslink an Ihre E-Mail-Adresse gesendet.
                 </div>
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                <PrimaryButton :disabled="form.processing">Speichern</PrimaryButton>
 
                 <Transition
                     enter-active-class="transition ease-in-out"
@@ -153,7 +153,7 @@ const handleLogoChange = (e) => {
                     leave-active-class="transition ease-in-out"
                     leave-to-class="opacity-0"
                 >
-                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
+                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Gespeichert.</p>
                 </Transition>
             </div>
         </form>
