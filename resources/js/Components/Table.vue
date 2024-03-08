@@ -22,7 +22,7 @@
                     <MoreHorizontal @click="toggleDropdown(index)" class="cursor-pointer" />
                     <div v-if="showDropdown === index" class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border-2 border-black z-10">
                         <ul>
-                            <li @click="edit(index, items)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Genehmigen</li>
+                            <li @click="approve(index, items)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Genehmigen</li>
                             <li @click="reject(index, items)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Ablehnen</li>
                         </ul>
                     </div>
