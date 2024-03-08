@@ -23,7 +23,7 @@ export default {
   methods: {
     async fetchItems() {
       try {
-        const response = await axios.get('/items?all=true');
+        const response = await axios.get('/items');
         this.items = response.data;
       } catch (error) {
         console.error('Error fetching items:', error);
