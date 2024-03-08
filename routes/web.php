@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\RegistrationsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -50,6 +51,8 @@ Route::middleware('auth:sanctum')->get('/items', [ItemController::class, 'index'
 Route::middleware('auth:sanctum')->put('/items/{id}/approve', [ItemController::class, 'approve']);
 Route::middleware('auth:sanctum')->put('/items/{id}/reject', [ItemController::class, 'reject']);
 
+
+Route::middleware('auth:sanctum')->get('/registrations', [RegistrationsController::class, 'index']);
 
 
 require __DIR__.'/auth.php';
