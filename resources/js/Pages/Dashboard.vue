@@ -4,6 +4,7 @@ import Reports from "@/Components/Reports.vue";
 import AdminOverview from "@/Components/AdminOverview.vue";
 import UserOverview from "@/Components/UserOverview.vue";
 import Registrations from "@/Components/Registrations.vue";
+import ProfileOverview from "@/Components/ProfileOverview.vue";
 
 export default {
     props: {
@@ -23,7 +24,7 @@ export default {
         }
     },
     components: {
-        Sidebar, Reports, AdminOverview, UserOverview, Registrations
+        Sidebar, Reports, AdminOverview, UserOverview, Registrations, ProfileOverview
     }
 };
 </script>
@@ -35,6 +36,7 @@ export default {
             <reports v-if="currentComponent === 'reports'"></reports>
             <admin-overview v-if="currentComponent === 'adminOverview'"></admin-overview>
             <user-overview v-if="currentComponent === 'userOverview'"></user-overview>
+            <profile-overview v-if="currentComponent === 'profileOverview'"></profile-overview>
             <registrations v-if="currentComponent === 'registrations'"></registrations>
         </div>
     </div>
