@@ -28,6 +28,20 @@ const form = useForm({
 const handleLogoChange = (e) => {
     form.logo = e.target.files[0];
 };
+
+const updateProfile = () => {
+    form.put(route('profile.update'), {
+        preserveScroll: true,
+        onSuccess: () => form.reset(),
+        onError: () => {
+            if (form.errors.name) {
+                form.reset('name', '');
+                name.value.focus();
+            }
+        },
+    });
+};
+
 </script>
 
 <template>
@@ -40,7 +54,7 @@ const handleLogoChange = (e) => {
             </p>
         </header>
 
-        <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
+        <form @submit.prevent="updateProfile" class="mt-6 space-y-6">
             <div>
                 <InputLabel for="name" value="Unternehmensname" />
 
