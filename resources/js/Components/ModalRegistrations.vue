@@ -96,6 +96,35 @@ const form = useForm({
                             </div>
 
                             <div class="flex py-5">
+                                <div class="flex-1 mr-10">
+                                    <InputLabel for="lecture" value="Vortrag" />
+                                    <div class="mt-3 block w-full">
+                                        <label class="me-5">
+                                            <input class="me-2" type="radio" name="lecture" value="yes" v-model="form.lecture" required>
+                                            Ja
+                                        </label>
+                                        <label>
+                                            <input class="me-2" type="radio" name="lecture" value="no" v-model="form.lecture">
+                                            Nein
+                                        </label>
+                                    </div>
+                                    <InputError class="mt-2" :message="form.errors.lecture" />
+                                </div>
+                                <div class="flex-1">
+                                    <InputLabel for="lecture_title" value="Titel des Vortrags" />
+                                    <TextInput
+                                        id="lecture_title"
+                                        type="text"
+                                        class="mt-1 block w-full"
+                                        v-model="form.lecture_title"
+                                        required
+                                        autocomplete="off"
+                                    />
+                                    <InputError class="mt-2" :message="form.errors.lecture_title" />
+                                </div>
+                            </div>
+
+                            <div class="flex py-5">
                                 <div class="flex-1 w-full ">
                                     <InputLabel for="notice" class="mb-1" value="Informationen / Notizen:" />
                                     <textarea class="resize rounded-md w-full font-medium text-sm text-gray-700 h-40" placeholder="Wir bitten Sie, uns im Voraus die gewünschten Maße Ihres Standes sowie spezielle Ausstattungswünsche mitzuteilen, z.B.: Standgröße 4x4 Meter, Anzahl der benötigten Stromanschlüsse (4x), Anzahl der Verlängerungskabel (2x) usw."></textarea>
