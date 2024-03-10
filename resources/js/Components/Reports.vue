@@ -1,4 +1,5 @@
 <template>
+    <Head title="Reports" />
     <div>
         <div class="flex flex-wrap items-center">
             <div class="w-full sm:w-1/2 md:w-1/4 mb-4">
@@ -51,8 +52,10 @@
 
 <script>
 import axios from 'axios';
+import {Head} from "@inertiajs/vue3";
 
 export default {
+    components: {Head},
     data() {
         return {
             filter: {

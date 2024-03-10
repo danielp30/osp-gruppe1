@@ -11,6 +11,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image">
     <div>
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-white  border-gray-100">

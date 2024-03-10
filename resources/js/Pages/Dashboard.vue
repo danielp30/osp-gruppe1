@@ -5,6 +5,7 @@ import AdminOverview from "@/Components/AdminOverview.vue";
 import UserOverview from "@/Components/UserOverview.vue";
 import Registrations from "@/Components/Registrations.vue";
 import ProfileOverview from "@/Components/ProfileOverview.vue";
+import {Head} from "@inertiajs/vue3";
 
 export default {
     props: {
@@ -24,12 +25,14 @@ export default {
         }
     },
     components: {
+        Head,
         Sidebar, Reports, AdminOverview, UserOverview, Registrations, ProfileOverview
     }
 };
 </script>
 
 <template>
+    <Head title="Dashboard" />
     <div class="flex flex-row bg-[#FFF7F1]">
         <sidebar :user="auth.user" @input="handleComponentChange"></sidebar>
         <div class="p-12 w-3/5 bg-white w-screen rounded-xl m-12">
