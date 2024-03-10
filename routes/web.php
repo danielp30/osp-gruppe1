@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\RegistrationsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,9 +17,12 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return redirect('register');
+});
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Login', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -50,6 +54,8 @@ Route::middleware('auth:sanctum')->get('/items', [ItemController::class, 'index'
 Route::middleware('auth:sanctum')->put('/items/{id}/approve', [ItemController::class, 'approve']);
 Route::middleware('auth:sanctum')->put('/items/{id}/reject', [ItemController::class, 'reject']);
 
+
+Route::middleware('auth:sanctum')->get('/registrations', [RegistrationsController::class, 'index']);
 
 
 require __DIR__.'/auth.php';

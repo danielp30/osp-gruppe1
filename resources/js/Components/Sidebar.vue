@@ -59,18 +59,18 @@ export default {
                     </div>
                 </li>
                 <li>
-                    <a :href="route('profile.edit')"
-                        class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <User color="black" size="24" />
+                    <div @click="$emit('input', 'profileOverview')"
+                         class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <ClipboardSignature color="black" size="24" />
                         <span class="flex-1 ms-3 whitespace-nowrap">Profil</span>
-                    </a>
+                    </div>
                 </li>
                 <li>
                     <div @click="$emit('input', 'registrations')"
                         class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <ClipboardSignature color="black" size="24" />
                         <span class="flex-1 ms-3 whitespace-nowrap">Anmeldungen</span>
-                </div>
+                    </div>
                 </li>
                 <li>
                     <a :href="route('logout')" methods="post"
