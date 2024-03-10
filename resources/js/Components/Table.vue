@@ -1,5 +1,5 @@
 <template>
-    <table class="border border-2 border-black w-full rounded-xl">
+    <table class="table-fixed border border-2 border-black w-full rounded-xl">
         <thead class="border border-2 border-black">
         <tr class="text-up">
             <td><input type="checkbox" class="border-black border-2 m-2"/></td>
