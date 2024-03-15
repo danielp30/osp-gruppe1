@@ -165,17 +165,16 @@ class ItemController extends Controller
         $informationStand->date = $request->date;
         $informationStand->status = 'offen';
         $informationStand->created_at = date('now');
-        $informationStand->message = $request->message;
+        $informationStand->note = $request->note;
 
         $informationStand->save();
 
-        if ($request->vortrag === 'ja') {
+        if ($request->lecture === 'ja') {
             $lecture = new Lecture();
-            $lecture->title = $request->title;
+            $lecture->user_id = $user->id;
             $lecture->date = $request->date;
-            $lecture->status = $request->status;
-            $lecture->subject = $request->subject;
-            $lecture->user_id = $request->user()->id;
+            $lecture->status = 'offen';
+            $lecture->subject = $request->lecture_title;
             $lecture->save();
         }
 
@@ -186,3 +185,4 @@ class ItemController extends Controller
 
 
 }
+

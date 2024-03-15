@@ -11,7 +11,7 @@ import axios from 'axios';
 const form = useForm({
     date: '',
     lecture_title: '',
-    message: '',
+    note: '',
     errors: {},
 });
 
@@ -37,12 +37,12 @@ const submitForm = async () => {
 <template>
     <div>
         <!-- Trigger Button -->
-            <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center">
             <button
                 type="button"
                 @click="toggleModal"
-                class="bg-[#FFD4B5] p-4 hover:bg-black hover:text-white transition-all">
-                Neue Anmeldung vornehmen
+                class="bg-black p-4 text-white hover:bg-white hover:text-black border-black border-2 transition-all">
+                Neue Anmeldung
             </button>
         </div>
 
@@ -73,20 +73,17 @@ const submitForm = async () => {
                             </div>
 
                             <div class="flex py-5">
-                                <div class="flex-1 mr-10">
-                                    <InputLabel for="lecture" value="Vortrag" />
-                                    <div class="mt-3 block w-full">
-                                        <label class="me-5">
-                                            <input class="me-2" type="radio" name="lecture" value="yes" v-model="form.lecture" required>
-                                            Ja
-                                        </label>
-                                        <label>
-                                            <input class="me-2" type="radio" name="lecture" value="no" v-model="form.lecture">
-                                            Nein
-                                        </label>
-                                    </div>
-                                    <InputError class="mt-2" :message="form.errors.lecture" />
+                                <div class="mt-3 block w-full">
+                                    <label class="me-5">
+                                        <input class="me-2" type="radio" name="lecture" value="ja" v-model="form.lecture" required>
+                                        Ja
+                                    </label>
+                                    <label>
+                                        <input class="me-2" type="radio" name="lecture" value="nein" v-model="form.lecture">
+                                        Nein
+                                    </label>
                                 </div>
+
                                 <div class="flex-1">
                                     <InputLabel for="lecture_title" value="Titel des Vortrags" />
                                     <TextInput
@@ -103,7 +100,7 @@ const submitForm = async () => {
                             <div class="flex py-5">
                                 <div class="flex-1 w-full ">
                                     <InputLabel for="notice" class="mb-1" value="Informationen / Notizen:" />
-                                    <textarea v-model="form.message"  class="resize rounded-md w-full font-medium text-sm text-gray-700 h-40" placeholder="Wir bitten Sie, uns im Voraus die gewünschten Maße Ihres Standes sowie spezielle Ausstattungswünsche mitzuteilen, z.B.: Standgröße 4x4 Meter, Anzahl der benötigten Stromanschlüsse (4x), Anzahl der Verlängerungskabel (2x) usw."></textarea>
+                                    <textarea v-model="form.note"  class="resize rounded-md w-full font-medium text-sm text-gray-700 h-40" placeholder="Wir bitten Sie, uns im Voraus die gewünschten Maße Ihres Standes sowie spezielle Ausstattungswünsche mitzuteilen, z.B.: Standgröße 4x4 Meter, Anzahl der benötigten Stromanschlüsse (4x), Anzahl der Verlängerungskabel (2x) usw."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -175,3 +172,4 @@ export default {
     cursor: pointer;
 }
 </style>
+
