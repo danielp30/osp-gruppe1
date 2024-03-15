@@ -22,7 +22,7 @@ import DangerButton from "../../../vendor/laravel/breeze/stubs/inertia-vue-ts/re
             <th class="px-6 py-3 text-left">-</th>
             <td class="px-6 py-4 ">C10</td>
             <td class="px-6 py-4 ">ja</td>
-            <td class="px-6 py-4"><button>Anmelden</button></td>
+            <td class="px-6 py-4"><button>erneut anmelden</button></td>
         </tr>
         <tr>
             <td class="px-6 py-4 ">2023</td>
@@ -30,7 +30,7 @@ import DangerButton from "../../../vendor/laravel/breeze/stubs/inertia-vue-ts/re
             <th class="px-6 py-3 text-left">05-03-2023</th>
             <td class="px-6 py-4 ">C10</td>
             <td class="px-6 py-4 ">nein</td>
-            <td class="px-6 py-4 "><button>Anmelden</button></td>
+            <td class="px-6 py-4 "><button>erneut anmelden</button></td>
         </tr>
         </tbody>
     </table>

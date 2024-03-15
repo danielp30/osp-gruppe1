@@ -2,8 +2,13 @@
     <div class="flex flex-col">
         <h1 class="text-2xl pb-10">User Dashboard</h1>
         <div class="flex flex-col justify-center items-center">
-            <div class="flex justify-end pb-5 w-full">
-                <input type="text" v-model="searchQuery" placeholder="Suchen..." class="w-64 border-2 border-black focus:border-black">
+            <div class="flex justify-between items-center m-5 w-full pb-5">
+                <div>
+                    <ModalRegistrations></ModalRegistrations>
+                </div>
+                <div>
+                    <input type="text" v-model="searchQuery" placeholder="Suchen..." class="w-64 border-2 border-black focus:border-black">
+                </div>
             </div>
             <UserTable :items="filteredItems"></UserTable>
         </div>
@@ -14,6 +19,7 @@
 import {ref, computed, onMounted} from 'vue';
 import UserTable from '@/Components/UserTable.vue';
 import axios from "axios";
+import ModalRegistrations from "@/Components/ModalRegistrations.vue";
 
 const combinedItems = ref([]);
 const searchQuery = ref('');
