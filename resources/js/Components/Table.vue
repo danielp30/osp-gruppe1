@@ -24,6 +24,7 @@
                         <ul>
                             <li @click="approve(index, items)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Genehmigen</li>
                             <li @click="reject(index, items)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Ablehnen</li>
+                            <li @click="remove(index, items)" class="py-2 px-4 block text-gray-800 hover:bg-black hover:text-white cursor-pointer">Löschen</li>
                         </ul>
                     </div>
                 </div>
@@ -32,8 +33,6 @@
         </tbody>
     </table>
 </template>
-
-
 <script setup>
 import { MoreHorizontal } from 'lucide-vue-next';
 import { ref } from 'vue';
@@ -42,6 +41,15 @@ const showDropdown = ref(null);
 
 const toggleDropdown = (index) => {
     showDropdown.value = showDropdown.value === index ? null : index;
+};
+
+const remove = async (index, items) => {
+    try {
+        const itemId = items[index].id;
+        await axios.delete(`/items/${itemId}/delete`);
+    } catch (error) {
+        console.error('Error rejecting item:', error);
+    }
 };
 
 const approve = async (index, items) => {
@@ -63,6 +71,7 @@ const reject = async (index, items) => {
         console.error('Error rejecting item:', error);
     }
 };
+
 </script>
 
 <script>
