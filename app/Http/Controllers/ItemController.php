@@ -137,4 +137,24 @@ class ItemController extends Controller
         return response()->json(['error' => 'Unauthorized'], 401);
     }
 
+    public function cancel(Request $request, $id)
+    {
+        $item = Informationsstand::find($id);
+
+        if (!$item) {
+            $item = Lecture::find($id);
+        }
+
+        if ($item) {
+            $item->status = 'storniert';
+            $item->save();
+
+            return response()->json(['message' => 'Item rejected successfully'], 200);
+        }
+
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+
+
 }
