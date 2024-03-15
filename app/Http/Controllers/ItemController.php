@@ -7,6 +7,7 @@ use App\Models\Informationsstand;
 use App\Models\Lecture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
@@ -153,6 +154,33 @@ class ItemController extends Controller
         }
 
         return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+    public function newstore(Request $request)
+    {
+        $user = request()->user();
+
+        $informationStand = new Informationsstand();
+        $informationStand->user_id = $user->id;
+        $informationStand->date = $request->date;
+        $informationStand->status = 'offen';
+        $informationStand->created_at = date('now');
+        $informationStand->message = $request->message;
+
+        $informationStand->save();
+
+        if ($request->vortrag === 'ja') {
+            $lecture = new Lecture();
+            $lecture->title = $request->title;
+            $lecture->date = $request->date;
+            $lecture->status = $request->status;
+            $lecture->subject = $request->subject;
+            $lecture->user_id = $request->user()->id;
+            $lecture->save();
+        }
+
+        // Return a success response
+        return response()->json(['message' => 'Items created successfully'], 201);
     }
 
 

@@ -5,13 +5,32 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import axios from 'axios';
+
 
 const form = useForm({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
+    date: '',
+    lecture_title: '',
+    message: '',
+    errors: {},
 });
+
+const submitForm = async () => {
+    try {
+        const response = await axios.post('/items', form);
+        console.log(response.data.message);
+        // Reset the form after successful submission
+        form.reset();
+    } catch (error) {
+        if (error.response && error.response.status === 422) {
+            // Handle validation errors
+            form.errors = error.response.data.errors;
+        } else {
+            console.error('Error submitting form:', error);
+        }
+    }
+};
+
 </script>
 
 
@@ -37,61 +56,20 @@ const form = useForm({
                         <h1 class="modal-title text-2xl pb-10 p-5 m-5">Neue Anmeldung vornehmen</h1>
                         <button type="button" class="btn-close" @click="toggleModal"></button>
                     </div>
-                    <form action="">
+                    <form @submit.prevent="submitForm">
                         <div class="modal-body px-5 mx-5">
-                            <div class="flex mb-5">
-                                <div class="flex-1 mr-10">
-                                    <InputLabel for="year" value="Jahr" />
-                                    <TextInput
-                                        id="year"
-                                        type="number"
-                                        class="mt-1 block w-full"
-                                        v-model="form.year"
-                                        required
-                                        autofocus
-                                        autocomplete="off"
-                                    />
-                                    <InputError class="mt-2" :message="form.errors.year" />
-                                </div>
-                                <div class="flex-1">
-                                    <InputLabel for="status" value="Stand" />
-                                    <TextInput
-                                        id="status"
-                                        type="text"
-                                        class="mt-1 block w-full"
-                                        v-model="form.status"
-                                        required
-                                        autocomplete="off"
-                                    />
-                                    <InputError class="mt-2" :message="form.errors.status" />
-                                </div>
-                            </div>
-
                             <div class="flex py-5">
-                                <div class="flex-1 mr-10">
-                                    <InputLabel for="date-friday" value="Datum Freitag" />
-                                    <TextInput
-                                        id="date-friday"
-                                        type="date"
-                                        class="mt-1 block w-full"
-                                        v-model="form.dateFriday"
-                                        required
-                                        autocomplete="off"
-                                    />
-                                    <InputError class="mt-2" :message="form.errors.dateFriday" />
-                                </div>
-
                                 <div class="flex-1">
-                                    <InputLabel for="date-saturday" value="Datum Samstag" />
+                                    <InputLabel for="date" value="Datum" />
                                     <TextInput
-                                        id="date-saturday"
+                                        id="date"
                                         type="date"
                                         class="mt-1 block w-full"
-                                        v-model="form.dateSaturday"
+                                        v-model="form.date"
                                         required
                                         autocomplete="off"
                                     />
-                                    <InputError class="mt-2" :message="form.errors.dateSaturday" />
+                                    <InputError class="mt-2" :message="form.errors.date" />
                                 </div>
                             </div>
 
@@ -117,7 +95,6 @@ const form = useForm({
                                         type="text"
                                         class="mt-1 block w-full"
                                         v-model="form.lecture_title"
-                                        required
                                         autocomplete="off"
                                     />
                                     <InputError class="mt-2" :message="form.errors.lecture_title" />
@@ -127,7 +104,7 @@ const form = useForm({
                             <div class="flex py-5">
                                 <div class="flex-1 w-full ">
                                     <InputLabel for="notice" class="mb-1" value="Informationen / Notizen:" />
-                                    <textarea class="resize rounded-md w-full font-medium text-sm text-gray-700 h-40" placeholder="Wir bitten Sie, uns im Voraus die gewünschten Maße Ihres Standes sowie spezielle Ausstattungswünsche mitzuteilen, z.B.: Standgröße 4x4 Meter, Anzahl der benötigten Stromanschlüsse (4x), Anzahl der Verlängerungskabel (2x) usw."></textarea>
+                                    <textarea v-model="form.message"  class="resize rounded-md w-full font-medium text-sm text-gray-700 h-40" placeholder="Wir bitten Sie, uns im Voraus die gewünschten Maße Ihres Standes sowie spezielle Ausstattungswünsche mitzuteilen, z.B.: Standgröße 4x4 Meter, Anzahl der benötigten Stromanschlüsse (4x), Anzahl der Verlängerungskabel (2x) usw."></textarea>
                                 </div>
                             </div>
                         </div>
