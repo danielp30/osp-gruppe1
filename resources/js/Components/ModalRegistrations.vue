@@ -72,7 +72,7 @@ const submitForm = async () => {
                                 </div>
                             </div>
 
-                            <div class="flex py-5">
+                            <div class="flex justify-center items-center">
                                 <div class="mt-3 block w-full">
                                     <label class="me-5">
                                         <input class="me-2" type="radio" name="lecture" value="ja" v-model="form.lecture" required>
@@ -83,8 +83,7 @@ const submitForm = async () => {
                                         Nein
                                     </label>
                                 </div>
-
-                                <div class="flex-1">
+                                <div class="">
                                     <InputLabel for="lecture_title" value="Titel des Vortrags" />
                                     <TextInput
                                         id="lecture_title"

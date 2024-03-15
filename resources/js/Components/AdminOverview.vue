@@ -5,7 +5,8 @@
 
             <div class="flex justify-between pb-5 w-full">
                 <button :disabled="!(Object.keys(combinedItems).length)" @click="console.log(filteredItems)"
-                    class="mt-4 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"><span
+                        class="bg-black p-4 text-white hover:bg-white hover:text-black border-black border-2 transition-all">
+                    <span
                         v-if="Object.keys(combinedItems).length">PDF generieren</span>
                     <span v-else>Lade...</span>
                 </button>

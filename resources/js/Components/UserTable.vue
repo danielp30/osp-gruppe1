@@ -44,6 +44,12 @@ const toggleDropdown = (index) => {
     showDropdown.value = showDropdown.value === index ? null : index;
 };
 
+const edit = (index, items) => {
+    // You can implement your edit logic here, such as opening a modal or redirecting to an edit page
+    console.log('Edit item:', items[index]);
+};
+
+
 const cancel = async (index, items) => {
     try {
         const itemId = items[index].id;
