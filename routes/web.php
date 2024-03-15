@@ -53,8 +53,9 @@ Route::get('/test', function () {
 Route::middleware('auth:sanctum')->get('/items', [ItemController::class, 'index']);
 Route::middleware('auth:sanctum')->put('/items/{id}/approve', [ItemController::class, 'approve']);
 Route::middleware('auth:sanctum')->put('/items/{id}/reject', [ItemController::class, 'reject']);
-
-
+Route::middleware('auth:sanctum')->put('/items/{id}/cancel', [ItemController::class, 'cancel']);
+Route::middleware('auth:sanctum')->delete('/items/{id}/delete', [ItemController::class, 'delete']);
+Route::middleware('auth:sanctum')->post('/items', [ItemController::class, 'newstore']);
 Route::middleware('auth:sanctum')->get('/registrations', [RegistrationsController::class, 'index']);
 
 

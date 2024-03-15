@@ -51,7 +51,7 @@ export default {
                         <span class="ms-3">Dashboard</span>
                     </div>
                 </li>
-                <li>
+                <li v-if="user.is_admin">
                     <div @click="$emit('input', 'reports')"
                         class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <ClipboardPen color="black" size="24" />
@@ -63,13 +63,6 @@ export default {
                          class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <ClipboardSignature color="black" size="24" />
                         <span class="flex-1 ms-3 whitespace-nowrap">Profil</span>
-                    </div>
-                </li>
-                <li>
-                    <div @click="$emit('input', 'registrations')"
-                        class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <ClipboardSignature color="black" size="24" />
-                        <span class="flex-1 ms-3 whitespace-nowrap">Anmeldungen</span>
                     </div>
                 </li>
                 <li>
